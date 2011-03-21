@@ -1,0 +1,31 @@
+SheetGenerator: a web application for generating sheets
+
+
+SheetGenerator is an open-source application built on the Django Web Framework.
+
+Currently (2011-03-21) there is only one app available, which is the dotted lined sheet generator.
+This dotted lined sheet generator is inspired by KOKUYO S&T Co.,Ltd.
+KOKUYO product information: http://www.kokuyo-st.co.jp/stationery/dotkei/
+
+
+INSTALLATION
+
+Below is a list of packages used by SheetGenerator:
+
+* Python
+  http://www.python.org/
+* Django 1.2.3
+  http://www.djangoproject.com/
+* pyPdf 1.13
+  http://pypi.python.org/pypi/pyPdf/1.13
+* reportlab 2.5
+  http://pypi.python.org/pypi/reportlab/2.5
+* svglib 0.6.3
+  http://pypi.python.org/pypi/svglib/0.6.3
+
+After installing packages above, git clone this project.
+Change directory to under sheetgenerator/, and run:
+# python manage.py runserver
+
+Then you can see the web form at http://127.0.0.1:8000/dottedlined/
+
