@@ -1,7 +1,9 @@
 SheetGenerator: a web application for generating sheets
 
 
-SheetGenerator is an open-source application built on the Django Web Framework.
+SheetGenerator is an open-source application written in Python.
+For the web application version, it is built on the Django Web Framework;
+for the windows application version, it is built with wxPython.
 
 Currently (2011-03-21) there is only one app available, which is the dotted lined sheet generator.
 This dotted lined sheet generator is inspired by KOKUYO S&T Co.,Ltd.
@@ -16,6 +18,8 @@ Below is a list of packages used by SheetGenerator:
   http://www.python.org/
 * Django 1.2.3
   http://www.djangoproject.com/
+* wxPython 2.8
+  http://wxpython.org/
 * pyPdf 1.13
   http://pypi.python.org/pypi/pyPdf/1.13
 * reportlab 2.5
@@ -24,8 +28,19 @@ Below is a list of packages used by SheetGenerator:
   http://pypi.python.org/pypi/svglib/0.6.3
 
 After installing packages above, git clone this project.
-Change directory to under sheetgenerator/, and run:
+
+
+EXECUTION (Django Version)
+
+Change directory to under sheetgenerator/, run:
 # python manage.py runserver
 
-Then you can see the web form at http://127.0.0.1:8000/dottedlined/
+and you can see the web form at http://127.0.0.1:8000/dottedlined/
 
+
+EXECUTION (Windows Application Version)
+
+Change directory to under sheetgenerator/dottedlined/, run:
+# python wxpython_gui.py
+
+and you will launch the application.
