@@ -1,0 +1,67 @@
+<h1>Dotted Lined Sheets Generator</h1>
+
+<form action="/dottedlined/getpdf" method="get">
+<table border="0">
+<tbody>
+<tr>
+<td style="text-align: center;" colspan="2">
+<h2>Layout Settings</h2>
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+Grid Size: <input name="gridSize" size="2" type="text" value="8" />mm<br/>
+
+Dot Color: <input name="dotColor" size="9" type="text" value="#000000" /><br/>
+
+Dot Diameter: <input name="dotDiameter" size="4" type="text" value="0.4" />mm<br/>
+
+Line Color: <input name="lineColor" size="9" type="text" value="#000000" /><br/>
+
+Line Width: <input name="lineWidth" size="4" type="text" value="0.2" />mm
+
+</td>
+<td width="50%">
+
+Inner Margin: <input name="marginInner" size="3" type="text" value="20" />mm<br/>
+
+Outer Margin: <input name="marginOuter" size="3" type="text" value="15" />mm<br/>
+
+Top Margin: <input name="marginTop" size="3" type="text" value="15" />mm<br/>
+
+Bottom Margin: <input name="marginBottom" size="3" type="text" value="15" />mm<br/>
+
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<h2>Paper Size</h2>
+</td>
+<td style="text-align: center;">
+<h2>Number of Pages</h2>
+</td>
+</tr>
+<tr>
+<td>
+
+Page Width: <input name="pageWidth" size="4" type="text" value="210" />mm<br/>
+
+Page Height: <input name="pageHeight" size="4" type="text" value="297" />mm
+
+</td>
+<td>
+
+Number of Pages: <input name="pageCount" size="3" type="text" value="2" />
+
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<h2 style="text-align: center;">Download PDF</h2>
+<p style="text-align: center;"><input type="submit" value="Download PDF"
+</td>
+</tr>
+</tbody>
+</table>
+</form>
