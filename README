@@ -16,12 +16,8 @@ Below is a list of packages used by SheetGenerator:
   http://www.python.org/
 * wxPython 2.8
   http://wxpython.org/
-* pyPdf 1.13
-  http://pypi.python.org/pypi/pyPdf/1.13
 * reportlab 2.5
   http://pypi.python.org/pypi/reportlab/2.5
-* svglib 0.6.3
-  http://pypi.python.org/pypi/svglib/0.6.3
 
 After installing packages above, git clone this project.
 
@@ -29,6 +25,6 @@ After installing packages above, git clone this project.
 EXECUTION
 
 Change directory to under sheetgenerator, run:
-# python wxpython_gui.py
+# python dottedlined.py
 
 and you will launch the application.

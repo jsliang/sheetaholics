@@ -8,7 +8,7 @@ import wx
 
 class DottedLinedForm(wx.Frame):
     def __init__(self, parent, title):
-        super(DottedLinedForm, self).__init__(parent, title=title, size=(512, 350))
+        super(DottedLinedForm, self).__init__(parent, title=title, size=(500, 350))
         
         self.InitUI()
         self.Centre()
@@ -34,10 +34,11 @@ class DottedLinedForm(wx.Frame):
         sizer.Add(wx.StaticText(panel, label="mm"), pos=(dot_line_row, dot_line_col + 2), flag=wx.ALIGN_RIGHT|wx.TOP|wx.LEFT|wx.BOTTOM, border=spacing)
         dot_line_row += 1
         
+        self.btn_dotcolor = wx.Button(panel, label="Select Color")
+        self.btn_dotcolor.Bind(wx.EVT_BUTTON, self.on_btn_dotcolor)
         txt_dotcolor = wx.StaticText(panel, label="Dot Color:")
-        self.tc_dotcolor = wx.TextCtrl(panel, value="#000000")
         sizer.Add(txt_dotcolor, pos=(dot_line_row, dot_line_col + 0), flag=wx.ALIGN_RIGHT|wx.TOP|wx.LEFT, border=spacing)
-        sizer.Add(self.tc_dotcolor, pos=(dot_line_row, dot_line_col + 1), span=(1, 2), flag=wx.EXPAND|wx.TOP|wx.LEFT, border=spacing)
+        sizer.Add(self.btn_dotcolor, pos=(dot_line_row, dot_line_col + 1), span=(1, 2), flag=wx.EXPAND|wx.TOP|wx.LEFT, border=spacing)
         dot_line_row += 1
         
         txt_dotdiameter = wx.StaticText(panel, label="Dot Diameter:")
@@ -47,10 +48,11 @@ class DottedLinedForm(wx.Frame):
         sizer.Add(wx.StaticText(panel, label="mm"), pos=(dot_line_row, dot_line_col + 2), flag=wx.ALIGN_RIGHT|wx.TOP|wx.LEFT, border=spacing)
         dot_line_row += 1
         
+        self.btn_linecolor = wx.Button(panel, label="Select Color")
+        self.btn_linecolor.Bind(wx.EVT_BUTTON, self.on_btn_linecolor)
         txt_linecolor = wx.StaticText(panel, label="Line Color:")
-        self.tc_linecolor = wx.TextCtrl(panel, value="#000000")
         sizer.Add(txt_linecolor, pos=(dot_line_row, dot_line_col + 0), flag=wx.ALIGN_RIGHT|wx.TOP|wx.LEFT, border=spacing)
-        sizer.Add(self.tc_linecolor, pos=(dot_line_row, dot_line_col + 1), span=(1, 2), flag=wx.EXPAND|wx.TOP|wx.LEFT, border=spacing)
+        sizer.Add(self.btn_linecolor, pos=(dot_line_row, dot_line_col + 1), span=(1, 2), flag=wx.EXPAND|wx.TOP|wx.LEFT, border=spacing)
         dot_line_row += 1
         
         txt_linewidth = wx.StaticText(panel, label="Line Width:")
@@ -126,8 +128,7 @@ class DottedLinedForm(wx.Frame):
         txt_pagecount = wx.StaticText(panel, label="Number of Pages:")
         self.tc_pagecount = wx.TextCtrl(panel, value="2")
         sizer.Add(txt_pagecount, pos=(pagecount_row, pagecount_col + 0), flag=wx.ALIGN_RIGHT|wx.TOP|wx.LEFT, border=spacing)
-        sizer.Add(self.tc_pagecount, pos=(pagecount_row, pagecount_col + 1), flag=wx.EXPAND|wx.TOP|wx.LEFT, border=spacing)
-        sizer.Add(wx.StaticText(panel, label="mm"), pos=(pagecount_row, pagecount_col + 2), flag=wx.ALIGN_RIGHT|wx.TOP|wx.RIGHT|wx.BOTTOM, border=spacing)
+        sizer.Add(self.tc_pagecount, pos=(pagecount_row, pagecount_col + 1), span=(1,2), flag=wx.EXPAND|wx.TOP|wx.LEFT, border=spacing)
         pagecount_row += 1
         
         btn_genpdf = wx.Button(panel, label="Generate PDF")
@@ -138,7 +139,23 @@ class DottedLinedForm(wx.Frame):
         sizer.AddGrowableCol(1)
         sizer.AddGrowableCol(5)
         panel.SetSizerAndFit(sizer)
-
+    
+    def on_btn_linecolor(self, event):
+        dialog = wx.ColourDialog(None)
+        dialog.GetColourData().SetChooseFull(True)
+        if dialog.ShowModal() == wx.ID_OK:
+            data = dialog.GetColourData()
+            self.btn_linecolor.SetForegroundColour(data.GetColour())
+        dialog.Destroy()
+    
+    def on_btn_dotcolor(self, event):
+        dialog = wx.ColourDialog(None)
+        dialog.GetColourData().SetChooseFull(True)
+        if dialog.ShowModal() == wx.ID_OK:
+            data = dialog.GetColourData()
+            self.btn_dotcolor.SetForegroundColour(data.GetColour())
+        dialog.Destroy()
+    
     def GeneratePDF(self, event):
         config = {}
         config['gridSize'] =        float(self.tc_gridsize.GetValue())
@@ -149,18 +166,16 @@ class DottedLinedForm(wx.Frame):
         config['marginTop'] =       float(self.tc_topmargin.GetValue())
         config['marginBottom'] =    float(self.tc_bottommargin.GetValue())
         config['dotDiameter'] =     float(self.tc_dotdiameter.GetValue())
-        config['dotColor'] =        self.tc_dotcolor.GetValue()
+        config['dotColor'] =        self.btn_dotcolor.GetForegroundColour()
         config['lineWidth'] =       float(self.tc_linewidth.GetValue())
-        config['lineColor'] =       self.tc_linecolor.GetValue()
+        config['lineColor'] =       self.btn_linecolor.GetForegroundColour()
         config['pageCount'] =       float(self.tc_pagecount.GetValue())
         
         dialog = wx.DirDialog(None, "Choose a directory to store the PDF file:", style=wx.DD_DEFAULT_STYLE | wx.DD_NEW_DIR_BUTTON)
         if dialog.ShowModal() == wx.ID_OK:
             pdf_filename = "dottedlinedsheets_%s.pdf" % datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
             pdf_filename = os.path.join(dialog.GetPath(), pdf_filename)
-            f = open(pdf_filename, 'w')
-            f.write(generator.get_pdf_content(config))
-            f.close()
+            generator.genpdf(pdf_filename, config)
             os.system(pdf_filename)
         dialog.Destroy()
 
