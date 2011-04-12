@@ -1,7 +1,7 @@
-SheetGenerator: a web application for generating sheets
+Sheetaholics: a web application for generating sheets
 
 
-SheetGenerator is an open-source application written in Python.
+Sheetaholics is an sheet generator written in Python.
 
 Currently (2011-04-12) there is only one app available, which is the dotted lined sheet generator.
 This dotted lined sheet generator is inspired by KOKUYO S&T Co.,Ltd.
@@ -11,7 +11,7 @@ KOKUYO product information: http://www.kokuyo-st.co.jp/stationery/dotkei/
 
 [INSTALLATION]
 
-Below is a list of packages used by SheetGenerator:
+Below is a list of packages used by Sheetaholics:
 
 * Python 2.5
   http://www.python.org/
@@ -27,8 +27,8 @@ After installing packages above, git clone this project.
 
 [EXECUTION]
 
-Change directory to under sheetgenerator/dottedlined/, and execute:
-# python DottedLined.py
+Change directory to under sheetaholics/dottedlined/, and execute:
+# python dottedlined.py
 
 and you will launch the application.
 
@@ -46,13 +46,13 @@ Download and install Python Win32 Extensions and PyInstaller 1.4 first:
 * PyInstaller 1.4
   http://www.pyinstaller.org/
 
-Change directory to under sheetgenerator/dottedlined/, and execute:
+Change directory to under sheetaholics/dottedlined/, and execute:
 # python path/to/pyinstaller-1.4/Configure.py
-# python path/to/pyinstaller-1.4/Makespec.py DottedLined.py --name="DottedLined-win32-1.0" --onefile --windowed
-# python path/to/pyinstaller-1.4/Build.py DottedLined-win32-1.0.spec
+# python path/to/pyinstaller-1.4/Makespec.py dottedlined.py --name="sheetaholics-dottedlined-win32-1.0" --onefile --windowed
+# python path/to/pyinstaller-1.4/Build.py sheetaholics-dottedlined-win32-1.0.spec
 
 If fails, try uncommenting line 9~29 (by removing the triple quotes in line 8 and 30) of
-sheetgenerator/dottedlined/DottedLined.py and execute the above commands again.
+sheetaholics/dottedlined/dottedlined.py and execute the above commands again.
 
-The executable DottedLined-win32-1.0.exe will be generated and located under
-sheetgenerator/dottedlined/dist/
+The executable sheetaholics-dottedlined-win32-1.0.exe will be generated and located under
+sheetaholics/dottedlined/dist/
