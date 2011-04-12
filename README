@@ -3,17 +3,19 @@ SheetGenerator: a web application for generating sheets
 
 SheetGenerator is an open-source application written in Python.
 
-Currently (2011-03-21) there is only one app available, which is the dotted lined sheet generator.
+Currently (2011-04-12) there is only one app available, which is the dotted lined sheet generator.
 This dotted lined sheet generator is inspired by KOKUYO S&T Co.,Ltd.
 KOKUYO product information: http://www.kokuyo-st.co.jp/stationery/dotkei/
 
 
-INSTALLATION
+
+[INSTALLATION]
 
 Below is a list of packages used by SheetGenerator:
 
-* Python
+* Python 2.5
   http://www.python.org/
+  Python 2.5 has been tested okay. Python 2.7 might fail when using PyInstaller.
 * wxPython 2.8
   http://wxpython.org/
 * reportlab 2.5
@@ -22,9 +24,29 @@ Below is a list of packages used by SheetGenerator:
 After installing packages above, git clone this project.
 
 
-EXECUTION
 
-Change directory to under sheetgenerator, run:
-# python dottedlined.py
+[EXECUTION]
+
+Change directory to under sheetgenerator/dottedlined/, and execute:
+# python DottedLined.py
 
 and you will launch the application.
+
+
+
+[BUILDING EXECUTABLE]
+
+Building executables on Windows 7 32-bit with Python 2.5 and PyInstaller 1.4 has been tested.
+
+Download PyInstaller 1.4:
+
+* PyInstaller 1.4
+  http://www.pyinstaller.org/
+
+Change directory to under sheetgenerator/dottedlined/, and execute:
+# python path/to/pyinstaller-1.4/Configure.py
+# python path/to/pyinstaller-1.4/Makespec.py DottedLined.py --name="DottedLined-1.0" --onefile --windowed
+# python path/to/pyinstaller-1.4/Build.py DottedLined-1.0.spec
+
+The executable DottedLined-1.0.exe will be generated and located under
+sheetgenerator/dottedlined/dist/
