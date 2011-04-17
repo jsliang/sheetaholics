@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-04-17 15:58+Taipei Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+#: dottedlined.py:31
+msgid "Choose a directory to store the PDF file:"
+msgstr ""
+
+#: gui.py:22
+msgid "Sheetaholics: Dotted Lined Sheet"
+msgstr ""
+
+#: gui.py:33
+msgid "Dot and Line"
+msgstr ""
+
+#: gui.py:37
+msgid "Grid Size:"
+msgstr ""
+
+#: gui.py:41 gui.py:62 gui.py:80 gui.py:95 gui.py:106
+#: gui.py:117 gui.py:128 gui.py:143 gui.py:154
+msgid "mm"
+msgstr ""
+
+#: gui.py:45
+msgid "Dot Color:"
+msgstr ""
+
+#: gui.py:52
+msgid "8"
+msgstr ""
+
+#: gui.py:55
+msgid "Dot Diameter:"
+msgstr ""
+
+#: gui.py:59
+msgid "0.4"
+msgstr ""
+
+#: gui.py:66
+msgid "Line Color:"
+msgstr ""
+
+#: gui.py:73
+msgid "Line Width:"
+msgstr ""
+
+#: gui.py:77
+msgid "0.2"
+msgstr ""
+
+#: gui.py:84
+msgid "Margin"
+msgstr ""
+
+#: gui.py:88
+msgid "Inner Margin:"
+msgstr ""
+
+#: gui.py:92 gui.py:114 gui.py:125
+msgid "20"
+msgstr ""
+
+#: gui.py:99
+msgid "Outer Margin:"
+msgstr ""
+
+#: gui.py:103
+msgid "15"
+msgstr ""
+
+#: gui.py:110
+msgid "Top Margin:"
+msgstr ""
+
+#: gui.py:121
+msgid "Bottom Margin:"
+msgstr ""
+
+#: gui.py:132
+msgid "Paper Size"
+msgstr ""
+
+#: gui.py:136
+msgid "Page Width:"
+msgstr ""
+
+#: gui.py:140
+msgid "210"
+msgstr ""
+
+#: gui.py:147
+msgid "Page Height:"
+msgstr ""
+
+#: gui.py:151
+msgid "297"
+msgstr ""
+
+#: gui.py:158
+msgid "Number of Pages"
+msgstr ""
+
+#: gui.py:162
+msgid "Number of Pages:"
+msgstr ""
+
+#: gui.py:166
+msgid "2"
+msgstr ""
+
+#: gui.py:169
+msgid "Generate PDF"
+msgstr ""

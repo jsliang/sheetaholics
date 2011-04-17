@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-04-17 15:58+Taipei Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: dottedlined.py:31
+msgid "Choose a directory to store the PDF file:"
+msgstr "請選擇PDF檔案的輸出目錄:"
+
+#: gui.py:22
+msgid "Sheetaholics: Dotted Lined Sheet"
+msgstr "Sheetaholics: 點線筆記頁"
+
+#: gui.py:33
+msgid "Dot and Line"
+msgstr "點線設定"
+
+#: gui.py:37
+msgid "Grid Size:"
+msgstr "方眼大小:"
+
+#: gui.py:41 gui.py:62 gui.py:80 gui.py:95 gui.py:106
+#: gui.py:117 gui.py:128 gui.py:143 gui.py:154
+msgid "mm"
+msgstr ""
+
+#: gui.py:45
+msgid "Dot Color:"
+msgstr "圓點顏色:"
+
+#: gui.py:52
+msgid "8"
+msgstr ""
+
+#: gui.py:55
+msgid "Dot Diameter:"
+msgstr "圓點直徑:"
+
+#: gui.py:59
+msgid "0.4"
+msgstr ""
+
+#: gui.py:66
+msgid "Line Color:"
+msgstr "橫線顏色:"
+
+#: gui.py:73
+msgid "Line Width:"
+msgstr "橫線線寬:"
+
+#: gui.py:77
+msgid "0.2"
+msgstr ""
+
+#: gui.py:84
+msgid "Margin"
+msgstr "頁面邊界"
+
+#: gui.py:88
+msgid "Inner Margin:"
+msgstr "內側邊界:"
+
+#: gui.py:92 gui.py:114 gui.py:125
+msgid "20"
+msgstr ""
+
+#: gui.py:99
+msgid "Outer Margin:"
+msgstr "外側邊界:"
+
+#: gui.py:103
+msgid "15"
+msgstr ""
+
+#: gui.py:110
+msgid "Top Margin:"
+msgstr "上方邊界:"
+
+#: gui.py:121
+msgid "Bottom Margin:"
+msgstr "下方邊界:"
+
+#: gui.py:132
+msgid "Paper Size"
+msgstr "紙張尺寸"
+
+#: gui.py:136
+msgid "Page Width:"
+msgstr "頁面寬度:"
+
+#: gui.py:140
+msgid "210"
+msgstr ""
+
+#: gui.py:147
+msgid "Page Height:"
+msgstr "頁面高度:"
+
+#: gui.py:151
+msgid "297"
+msgstr ""
+
+#: gui.py:158
+msgid "Number of Pages"
+msgstr "輸出頁數"
+
+#: gui.py:162
+msgid "Number of Pages:"
+msgstr "頁數:"
+
+#: gui.py:166
+msgid "2"
+msgstr ""
+
+#: gui.py:169
+msgid "Generate PDF"
+msgstr "產生PDF檔"

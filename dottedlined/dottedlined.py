@@ -28,7 +28,7 @@ class SheetaholicsDottedLined( gui.Sheetaholics_DottedLined ):
         config['lineColor'] =       self.clrpk_linecolor.GetForegroundColour()
         config['pageCount'] =       float(self.tc_pagecount.GetValue())
         
-        dialog = wx.DirDialog(None, "Choose a directory to store the PDF file:", style=wx.DD_DEFAULT_STYLE | wx.DD_NEW_DIR_BUTTON)
+        dialog = wx.DirDialog(None, _("Choose a directory to store the PDF file:"), style=wx.DD_DEFAULT_STYLE | wx.DD_NEW_DIR_BUTTON)
         if dialog.ShowModal() == wx.ID_OK:
             pdf_filename = "dottedlinedsheets_%s.pdf" % datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
             pdf_filename = os.path.join(dialog.GetPath(), pdf_filename)
