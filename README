@@ -48,11 +48,11 @@ Download and install Python Win32 Extensions and PyInstaller 1.4 first:
 
 Change directory to under sheetaholics/dottedlined/, and execute:
 # python path/to/pyinstaller-1.4/Configure.py
-# python path/to/pyinstaller-1.4/Makespec.py dottedlined.py --name="sheetaholics-dottedlined-win32-1.0" --onefile --windowed
-# python path/to/pyinstaller-1.4/Build.py sheetaholics-dottedlined-win32-1.0.spec
+# python path/to/pyinstaller-1.4/Makespec.py dottedlined.py --name="sheetaholics-dottedlined-win32-1.1" --onefile --windowed
+# python path/to/pyinstaller-1.4/Build.py sheetaholics-dottedlined-win32-1.1.spec
 
 If fails, try uncommenting line 13~33 (by removing the triple quotes in line 12 and 34) of
 sheetaholics/dottedlined/generator.py and execute the above commands again.
 
-The executable sheetaholics-dottedlined-win32-1.0.exe will be generated and located under
+The executable sheetaholics-dottedlined-win32-1.1.exe will be generated and located under
 sheetaholics/dottedlined/dist/
