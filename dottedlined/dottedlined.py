@@ -7,10 +7,21 @@ import gui
 import os
 import wx
 
+# Implementing Sheetaholics_DottedLined_Finished
+class Sheetaholics_DottedLined_Finished( gui.Sheetaholics_DottedLined_Finished ):
+	def __init__( self, parent ):
+		gui.Sheetaholics_DottedLined_Finished.__init__( self, parent )
+	
+	# Handlers for Sheetaholics_DottedLined_Finished events.
+	def btn_okOnButtonClick( self, event ):
+		# TODO: Implement btn_okOnButtonClick
+		self.Destroy()
+
 # Implementing Sheetaholics_DottedLined
 class SheetaholicsDottedLined( gui.Sheetaholics_DottedLined ):
     def __init__( self, parent ):
         gui.Sheetaholics_DottedLined.__init__( self, parent )
+        self.dp_output.SetPath(os.path.abspath(os.path.dirname(__file__)))
 
     # Handlers for Sheetaholics_DottedLined events.
     def btn_genpdfOnButtonClick( self, event ):
@@ -26,15 +37,15 @@ class SheetaholicsDottedLined( gui.Sheetaholics_DottedLined ):
         config['dotColor'] =        self.clrpk_dotcolor.GetColour()
         config['lineWidth'] =       float(self.tc_linewidth.GetValue())
         config['lineColor'] =       self.clrpk_linecolor.GetColour()
-        config['pageCount'] =       float(self.tc_pagecount.GetValue())
+        config['pageCount'] =       float(self.sc_pagecount.GetValue())
         
-        dialog = wx.DirDialog(None, u"請選擇PDF檔案的輸出目錄", style=wx.DD_DEFAULT_STYLE | wx.DD_NEW_DIR_BUTTON)
-        if dialog.ShowModal() == wx.ID_OK:
-            pdf_filename = "dottedlinedsheets_%s.pdf" % datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
-            pdf_filename = os.path.join(dialog.GetPath(), pdf_filename)
-            generator.genpdf(pdf_filename, config)
-            os.system(pdf_filename)
-        dialog.Destroy()
+        pdf_filename = "dottedlinedsheets_%s.pdf" % datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
+        pdf_filename = os.path.join(self.dp_output.GetPath(), pdf_filename)
+        generator.genpdf(pdf_filename, config)
+        
+        self.dialog = Sheetaholics_DottedLined_Finished(self)
+        self.dialog.tc_pdfpath.SetValue(pdf_filename)
+        self.dialog.Show()
 
 class SheetaholicsMain(wx.App):
     def OnInit(self):
