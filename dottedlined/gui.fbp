@@ -68,7 +68,7 @@
             <property name="size">500,400</property>
             <property name="style">wxDEFAULT_FRAME_STYLE</property>
             <property name="subclass">; </property>
-            <property name="title">Sheetaholics: 點線筆記頁 V1.1</property>
+            <property name="title">Sheetaholics: 點線筆記頁產生器 V1.1</property>
             <property name="toolbar_pane">0</property>
             <property name="tooltip"></property>
             <property name="validator_data_type"></property>
@@ -117,11 +117,11 @@
                     <property name="border">5</property>
                     <property name="flag">wxALL|wxEXPAND</property>
                     <property name="proportion">1</property>
-                    <object class="wxFlexGridSizer" expanded="0">
+                    <object class="wxFlexGridSizer" expanded="1">
                         <property name="cols">1</property>
                         <property name="flexible_direction">wxBOTH</property>
                         <property name="growablecols">0</property>
-                        <property name="growablerows">0</property>
+                        <property name="growablerows">0,2</property>
                         <property name="hgap">5</property>
                         <property name="minimum_size"></property>
                         <property name="name">fgSizer</property>
@@ -1320,7 +1320,7 @@
                                         <event name="OnUpdateUI"></event>
                                         <object class="sizeritem" expanded="0">
                                             <property name="border">5</property>
-                                            <property name="flag">wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL</property>
+                                            <property name="flag">wxALIGN_CENTER_HORIZONTAL|wxALL</property>
                                             <property name="proportion">1</property>
                                             <object class="wxFlexGridSizer" expanded="0">
                                                 <property name="cols">3</property>
@@ -2379,7 +2379,7 @@
                                         <event name="OnUpdateUI"></event>
                                         <object class="sizeritem" expanded="0">
                                             <property name="border">5</property>
-                                            <property name="flag">wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL</property>
+                                            <property name="flag">wxALIGN_CENTER_HORIZONTAL|wxALL</property>
                                             <property name="proportion">1</property>
                                             <object class="wxFlexGridSizer" expanded="0">
                                                 <property name="cols">2</property>
@@ -2586,7 +2586,7 @@
                                         <event name="OnUpdateUI"></event>
                                         <object class="sizeritem" expanded="0">
                                             <property name="border">5</property>
-                                            <property name="flag">wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL</property>
+                                            <property name="flag">wxALIGN_CENTER_HORIZONTAL|wxALL</property>
                                             <property name="proportion">1</property>
                                             <object class="wxFlexGridSizer" expanded="0">
                                                 <property name="cols">3</property>
@@ -3120,7 +3120,7 @@
                         </object>
                         <object class="sizeritem" expanded="0">
                             <property name="border">5</property>
-                            <property name="flag">wxALL|wxEXPAND</property>
+                            <property name="flag">wxALIGN_CENTER_VERTICAL|wxALL|wxEXPAND</property>
                             <property name="proportion">1</property>
                             <object class="wxFlexGridSizer" expanded="0">
                                 <property name="cols">2</property>
@@ -3220,7 +3220,7 @@
                                 </object>
                                 <object class="sizeritem" expanded="0">
                                     <property name="border">5</property>
-                                    <property name="flag">wxEXPAND|wxRIGHT</property>
+                                    <property name="flag">wxEXPAND|wxRIGHT|wxALIGN_CENTER_VERTICAL</property>
                                     <property name="proportion">0</property>
                                     <object class="wxDirPickerCtrl" expanded="0">
                                         <property name="BottomDockable">1</property>
@@ -3305,11 +3305,11 @@
                                 </object>
                             </object>
                         </object>
-                        <object class="sizeritem" expanded="0">
+                        <object class="sizeritem" expanded="1">
                             <property name="border">5</property>
-                            <property name="flag">wxALL|wxEXPAND</property>
+                            <property name="flag">wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL</property>
                             <property name="proportion">1</property>
-                            <object class="wxGridSizer" expanded="0">
+                            <object class="wxGridSizer" expanded="1">
                                 <property name="cols">2</property>
                                 <property name="hgap">0</property>
                                 <property name="minimum_size"></property>
@@ -3319,7 +3319,7 @@
                                 <property name="vgap">0</property>
                                 <object class="sizeritem" expanded="0">
                                     <property name="border">5</property>
-                                    <property name="flag">wxALIGN_BOTTOM|wxALL</property>
+                                    <property name="flag">wxALL|wxALIGN_CENTER_VERTICAL</property>
                                     <property name="proportion">1</property>
                                     <object class="wxFlexGridSizer" expanded="0">
                                         <property name="cols">2</property>

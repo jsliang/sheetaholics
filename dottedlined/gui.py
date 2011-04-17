@@ -16,7 +16,7 @@ import wx
 class Sheetaholics_DottedLined ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sheetaholics: 點線筆記頁 V1.1", pos = wx.DefaultPosition, size = wx.Size( 500,400 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sheetaholics: 點線筆記頁產生器 V1.1", pos = wx.DefaultPosition, size = wx.Size( 500,400 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 		
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
@@ -26,6 +26,7 @@ class Sheetaholics_DottedLined ( wx.Frame ):
 		fgSizer = wx.FlexGridSizer( 3, 1, 5, 5 )
 		fgSizer.AddGrowableCol( 0 )
 		fgSizer.AddGrowableRow( 0 )
+		fgSizer.AddGrowableRow( 2 )
 		fgSizer.SetFlexibleDirection( wx.BOTH )
 		fgSizer.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
@@ -160,7 +161,7 @@ class Sheetaholics_DottedLined ( wx.Frame ):
 		self.txt_mm_6.Wrap( -1 )
 		fgSizer_margin.Add( self.txt_mm_6, 0, wx.BOTTOM|wx.TOP, 5 )
 		
-		sbSizer_margin.Add( fgSizer_margin, 1, wx.ALL|wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		sbSizer_margin.Add( fgSizer_margin, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
 		
 		gbSizer_settings.Add( sbSizer_margin, wx.GBPosition( 0, 1 ), wx.GBSpan( 1, 1 ), wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
 		
@@ -178,7 +179,7 @@ class Sheetaholics_DottedLined ( wx.Frame ):
 		self.sc_pagecount = wx.SpinCtrl( self, wx.ID_ANY, u"2", wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 1, 1000, 2 )
 		fgSizer_pagecount.Add( self.sc_pagecount, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		sbSizer_pagecount.Add( fgSizer_pagecount, 1, wx.ALL|wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		sbSizer_pagecount.Add( fgSizer_pagecount, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
 		
 		gbSizer_settings.Add( sbSizer_pagecount, wx.GBPosition( 2, 0 ), wx.GBSpan( 1, 1 ), wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
 		
@@ -212,7 +213,7 @@ class Sheetaholics_DottedLined ( wx.Frame ):
 		self.txt_mm_8.Wrap( -1 )
 		fgSizer_papersize.Add( self.txt_mm_8, 0, wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		sbSizer_papersize.Add( fgSizer_papersize, 1, wx.ALL|wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		sbSizer_papersize.Add( fgSizer_papersize, 1, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
 		
 		gbSizer_settings.Add( sbSizer_papersize, wx.GBPosition( 1, 1 ), wx.GBSpan( 2, 1 ), wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
 		
@@ -228,9 +229,9 @@ class Sheetaholics_DottedLined ( wx.Frame ):
 		fgSizer_outputdir.Add( self.txt_outputdir, 0, wx.BOTTOM|wx.LEFT|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		self.dp_output = wx.DirPickerCtrl( self, wx.ID_ANY, wx.EmptyString, u"請選擇PDF檔案的輸出目錄", wx.DefaultPosition, wx.DefaultSize, wx.DIRP_DEFAULT_STYLE )
-		fgSizer_outputdir.Add( self.dp_output, 0, wx.EXPAND|wx.RIGHT, 5 )
+		fgSizer_outputdir.Add( self.dp_output, 0, wx.EXPAND|wx.RIGHT|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		fgSizer.Add( fgSizer_outputdir, 1, wx.ALL|wx.EXPAND, 5 )
+		fgSizer.Add( fgSizer_outputdir, 1, wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
 		
 		gSizer_footer = wx.GridSizer( 1, 2, 0, 0 )
 		
@@ -253,12 +254,12 @@ class Sheetaholics_DottedLined ( wx.Frame ):
 		self.m_hyperlink_github = wx.HyperlinkCtrl( self, wx.ID_ANY, u"jsliang/sheetaholics ", u"https://github.com/jsliang/sheetaholics", wx.DefaultPosition, wx.DefaultSize, wx.HL_DEFAULT_STYLE )
 		fgSizer_footer.Add( self.m_hyperlink_github, 0, wx.ALIGN_BOTTOM, 5 )
 		
-		gSizer_footer.Add( fgSizer_footer, 1, wx.ALIGN_BOTTOM|wx.ALL, 5 )
+		gSizer_footer.Add( fgSizer_footer, 1, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		self.btn_genpdf = wx.Button( self, wx.ID_ANY, u"產生PDF檔", wx.DefaultPosition, wx.DefaultSize, 0 )
 		gSizer_footer.Add( self.btn_genpdf, 0, wx.ALIGN_RIGHT|wx.EXPAND|wx.LEFT, 5 )
 		
-		fgSizer.Add( gSizer_footer, 1, wx.ALL|wx.EXPAND, 5 )
+		fgSizer.Add( gSizer_footer, 1, wx.ALL|wx.EXPAND|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		bSizer.Add( fgSizer, 1, wx.ALL|wx.EXPAND, 5 )
 		
@@ -286,7 +287,7 @@ class Sheetaholics_DottedLined ( wx.Frame ):
 class Sheetaholics_DottedLined_Finished ( wx.Dialog ):
 	
 	def __init__( self, parent ):
-		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"PDF檔已產生", pos = wx.DefaultPosition, size = wx.Size( 342,154 ), style = wx.DEFAULT_DIALOG_STYLE )
+		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"PDF檔已產生", pos = wx.DefaultPosition, size = wx.Size( 350,150 ), style = wx.DEFAULT_DIALOG_STYLE )
 		
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
 		
