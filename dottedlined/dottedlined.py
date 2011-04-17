@@ -23,12 +23,12 @@ class SheetaholicsDottedLined( gui.Sheetaholics_DottedLined ):
         config['marginTop'] =       float(self.tc_topmargin.GetValue())
         config['marginBottom'] =    float(self.tc_bottommargin.GetValue())
         config['dotDiameter'] =     float(self.tc_dotdiameter.GetValue())
-        config['dotColor'] =        self.clrpk_dotcolor.GetForegroundColour()
+        config['dotColor'] =        self.clrpk_dotcolor.GetColour()
         config['lineWidth'] =       float(self.tc_linewidth.GetValue())
-        config['lineColor'] =       self.clrpk_linecolor.GetForegroundColour()
+        config['lineColor'] =       self.clrpk_linecolor.GetColour()
         config['pageCount'] =       float(self.tc_pagecount.GetValue())
         
-        dialog = wx.DirDialog(None, u"請選擇PDF檔案的輸出目錄:", style=wx.DD_DEFAULT_STYLE | wx.DD_NEW_DIR_BUTTON)
+        dialog = wx.DirDialog(None, u"請選擇PDF檔案的輸出目錄", style=wx.DD_DEFAULT_STYLE | wx.DD_NEW_DIR_BUTTON)
         if dialog.ShowModal() == wx.ID_OK:
             pdf_filename = "dottedlinedsheets_%s.pdf" % datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
             pdf_filename = os.path.join(dialog.GetPath(), pdf_filename)
