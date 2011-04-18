@@ -7,49 +7,54 @@ import gui
 import os
 import wx
 
-# Implementing Sheetaholics_DottedLined_Finished
-class Sheetaholics_DottedLined_Finished( gui.Sheetaholics_DottedLined_Finished ):
-	def __init__( self, parent ):
-		gui.Sheetaholics_DottedLined_Finished.__init__( self, parent )
-	
-	# Handlers for Sheetaholics_DottedLined_Finished events.
-	def btn_okOnButtonClick( self, event ):
-		# TODO: Implement btn_okOnButtonClick
-		self.Destroy()
-
-# Implementing Sheetaholics_DottedLined
-class SheetaholicsDottedLined( gui.Sheetaholics_DottedLined ):
+# Implementing Sheetaholics_Finished_Dialog
+class Sheetaholics_Finished_Dialog( gui.Sheetaholics_Finished_Dialog ):
     def __init__( self, parent ):
-        gui.Sheetaholics_DottedLined.__init__( self, parent )
-        self.dp_output.SetPath(os.path.abspath(os.path.dirname(__file__)))
+        gui.Sheetaholics_Finished_Dialog.__init__( self, parent )
 
-    # Handlers for Sheetaholics_DottedLined events.
-    def btn_genpdfOnButtonClick( self, event ):
+    # Handlers for Sheetaholics_Finished_Dialog events.
+    def btn_okOnButtonClick( self, event ):
+        self.Destroy()
+
+# Implementing Sheetaholics_Main
+class Sheetaholics_Main( gui.Sheetaholics_Main ):
+    def __init__( self, parent ):
+        gui.Sheetaholics_Main.__init__( self, parent )
+        self.dp_output.SetPath(os.path.abspath(os.path.dirname(__file__)))
+    
+    # Handlers for Sheetaholics_Main events.
+    def cb_pronunciationOnCheckBox( self, event ):
+        if self.cb_pronunciation.GetValue():
+            self.tc_pronheight.Enable( True )
+        else:
+            self.tc_pronheight.Enable( False )
+    
+    def btn_dottedlined_genpdfOnButtonClick( self, event ):
         config = {}
-        config['gridSize'] =        float(self.tc_gridsize.GetValue())
+        config['gridSize'] =        float(self.tc_dottedlined_gridsize.GetValue())
         config['pageWidth'] =       float(self.tc_pagewidth.GetValue())
         config['pageHeight'] =      float(self.tc_pageheight.GetValue())
         config['marginInner'] =     float(self.tc_innermargin.GetValue())
         config['marginOuter'] =     float(self.tc_outermargin.GetValue())
         config['marginTop'] =       float(self.tc_topmargin.GetValue())
         config['marginBottom'] =    float(self.tc_bottommargin.GetValue())
-        config['dotDiameter'] =     float(self.tc_dotdiameter.GetValue())
-        config['dotColor'] =        self.clrpk_dotcolor.GetColour()
-        config['lineWidth'] =       float(self.tc_linewidth.GetValue())
-        config['lineColor'] =       self.clrpk_linecolor.GetColour()
+        config['dotDiameter'] =     float(self.tc_dottedlined_dotdiameter.GetValue())
+        config['dotColor'] =        self.clrpk_dottedlined_dotcolor.GetColour()
+        config['lineWidth'] =       float(self.tc_dottedlined_linewidth.GetValue())
+        config['lineColor'] =       self.clrpk_dottedlined_linecolor.GetColour()
         config['pageCount'] =       float(self.sc_pagecount.GetValue())
         
         pdf_filename = "dottedlinedsheets_%s.pdf" % datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
         pdf_filename = os.path.join(self.dp_output.GetPath(), pdf_filename)
         generator.genpdf(pdf_filename, config)
         
-        self.dialog = Sheetaholics_DottedLined_Finished(self)
+        self.dialog = Sheetaholics_Finished_Dialog(self)
         self.dialog.tc_pdfpath.SetValue(pdf_filename)
         self.dialog.Show()
 
 class SheetaholicsMain(wx.App):
     def OnInit(self):
-        self.m_frame = SheetaholicsDottedLined(None)
+        self.m_frame = Sheetaholics_Main(None)
         self.m_frame.Show()
         return True
 

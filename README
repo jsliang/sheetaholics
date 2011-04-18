@@ -13,9 +13,9 @@ KOKUYO product information: http://www.kokuyo-st.co.jp/stationery/dotkei/
 
 Below is a list of packages used by Sheetaholics:
 
-* Python 2.5
+* Python 2.5.4
   http://www.python.org/
-  Python 2.5 has been tested okay. Python 2.7 might fail when using PyInstaller.
+  Python 2.5.4 has been tested okay. Python 2.7 might fail when using PyInstaller.
 * wxPython 2.8
   http://wxpython.org/
 * reportlab 2.5
@@ -29,8 +29,8 @@ After installing packages above, git clone this project.
 
 [EXECUTION]
 
-Change directory to under sheetaholics/dottedlined/, and execute:
-# python dottedlined.py
+Change directory to under sheetaholics/, and execute:
+# python sheetaholics.py
 
 and you will launch the application.
 
@@ -38,7 +38,7 @@ and you will launch the application.
 
 [BUILDING WIN32 EXECUTABLE]
 
-Building win32 executables on Windows 7 with Python 2.5 and PyInstaller 1.4 has been tested.
+Building win32 executables on Windows 7 with Python 2.5.4 and PyInstaller 1.4 has been tested.
 
 Download and install Python Win32 Extensions and PyInstaller 1.4 first:
 
@@ -48,13 +48,13 @@ Download and install Python Win32 Extensions and PyInstaller 1.4 first:
 * PyInstaller 1.4
   http://www.pyinstaller.org/
 
-Change directory to under sheetaholics/dottedlined/, and execute:
+Change directory to under sheetaholics/, and execute:
 # python path/to/pyinstaller-1.4/Configure.py
-# python path/to/pyinstaller-1.4/Makespec.py dottedlined.py --name="sheetaholics-dottedlined-win32-1.1" --onefile --windowed
-# python path/to/pyinstaller-1.4/Build.py sheetaholics-dottedlined-win32-1.1.spec
+# python path/to/pyinstaller-1.4/Makespec.py sheetaholics.py --name="sheetaholics-win32-2.0" --onefile --windowed
+# python path/to/pyinstaller-1.4/Build.py sheetaholics-win32-2.0.spec
 
 If fails, try uncommenting line 13~33 (by removing the triple quotes in line 12 and 34) of
-sheetaholics/dottedlined/generator.py and execute the above commands again.
+sheetaholics/generator.py and execute the above commands again.
 
-The executable sheetaholics-dottedlined-win32-1.1.exe will be generated and located under
-sheetaholics/dottedlined/dist/
+The executable sheetaholics-win32-2.0.exe will be generated and located under
+sheetaholics/dist/
