@@ -32,6 +32,8 @@ class Sheetaholics_Main( gui.Sheetaholics_Main ):
     def btn_dottedlined_genpdfOnButtonClick( self, event ):
         config = {}
         config['gridSize'] =        float(self.tc_dottedlined_gridsize.GetValue())
+        config['pron'] =            self.cb_pronunciation.GetValue()
+        config['pronHeight'] =      float(self.tc_pronheight.GetValue())
         config['pageWidth'] =       float(self.tc_pagewidth.GetValue())
         config['pageHeight'] =      float(self.tc_pageheight.GetValue())
         config['marginInner'] =     float(self.tc_innermargin.GetValue())

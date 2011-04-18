@@ -37,6 +37,8 @@ def genpdf(filename, config):
     if config == None:
         config = {}
         config['gridSize'] =        8
+        config['pron'] =            True
+        config['pronHeight'] =      4
         config['pageWidth'] =       210
         config['pageHeight'] =      297
         config['marginInner'] =     20
@@ -49,8 +51,13 @@ def genpdf(filename, config):
         config['lineColor'] =       (0, 0, 0)
         config['pageCount'] =       5
 
-    # Configurations
+    # Load Configurations from Parameters
     gridSize = config['gridSize']*mm
+    pron = config['pron']
+    if pron:
+        pronHeight = config['pronHeight']*mm
+    else:
+        pronHeight = 0
     pageWidth = config['pageWidth']*mm
     pageHeight = config['pageHeight']*mm
     marginInner = config['marginInner']*mm
@@ -67,47 +74,90 @@ def genpdf(filename, config):
     c = canvas.Canvas(filename, pagesize = (pageWidth, pageHeight), bottomup = 0)
     
     col_count = int(math.floor((pageWidth - marginInner - marginOuter) / gridSize)) + 1
-    row_count = int(math.floor((pageHeight - marginTop - marginBottom) / gridSize)) + 1
+    row_count = int(math.floor((pageHeight - marginTop - marginBottom) / (gridSize + pronHeight))) + 1
     
     for i in range (0, int(config['pageCount'])):
-        # swap marginOuter & marginInner alternatively for even & odd pages
+        # Swap marginOuter & marginInner alternatively for even & odd pages
         if i > 0:
             _tmp = marginOuter
             marginOuter = marginInner
             marginInner = _tmp
         
+        # Required adjustment for reportlab
         x_adjust = ((pageWidth - marginInner - marginOuter) - (col_count - 1) * gridSize) / 2
-        y_adjust = ((pageHeight - marginTop - marginBottom) - (row_count - 1) * gridSize) / 2
+        y_adjust = ((pageHeight - marginTop - marginBottom) - (row_count - 1) * (gridSize + pronHeight)) / 2
 
         # Draw lines
         lineLength = (pageWidth - marginInner - marginOuter)
         x_offset = marginInner
         y_offset = y_adjust + marginTop - lineWidth / 2
 
+        c.setStrokeColorRGB(lineColor[0], lineColor[1], lineColor[2])
         for i in range (0, row_count):
-            if i == 1:
+            if i == 1 and not pron:
                 continue
-            elif i == 0 or i == 2 or i == row_count - 1:
-                _lineWidth = lineWidth * 2
+            
+            isFirstLine = (i == 0)
+            isLastLine = (i == row_count - 1)
+            
+            y = y_offset + i * (gridSize + pronHeight)
+            if pron and i == 1:
+                pass
             else:
-                _lineWidth = lineWidth
+                isHeaderBottomLine = (i == 2)
                 
-            y = y_offset + i * gridSize
-            c.setLineWidth(lineWidth)
-            c.setStrokeColorRGB(lineColor[0], lineColor[1], lineColor[2])
-            c.line(x_offset, y, x_offset + lineLength, y)
-
+                if isFirstLine or (not pron and (isHeaderBottomLine or isLastLine)):
+                    c.setLineWidth(lineWidth * 2)
+                else:
+                    c.setLineWidth(lineWidth)
+                
+                c.line(x_offset, y, x_offset + lineLength, y)
+                
+            if pron:
+                y += pronHeight
+                
+                if isFirstLine:
+                    y = y + gridSize
+                
+                if isFirstLine or isLastLine:
+                    c.setLineWidth(lineWidth * 2)
+                else:
+                    c.setLineWidth(lineWidth)
+                
+                c.line(x_offset, y, x_offset + lineLength, y)
+                
         # Draw dots
-        x_offset = x_adjust + marginInner - dotDiameter
-        y_offset = y_adjust + marginTop - lineWidth * 0.5
+        x_offset = x_adjust + marginInner
+        y_offset = y_adjust + marginTop - lineWidth / 2
 
-        for i in range (0, col_count):
-            for j in range (3, row_count - 1):
-                x = x_offset + i * gridSize
-                y = y_offset + j * gridSize
+        c.setFillColorRGB(dotColor[0], dotColor[1], dotColor[2])
+        
+        for j in range (0, row_count):
+            isHeaderLine = (pron and j < 1) or (not pron and j < 2)
+            isLastRow = (j == row_count - 1)
+            
+            if pron:
+                isHeaderBottomLine = (j == 1)
+            else:
+                isHeaderBottomLine = (j == 2)
+            
+            if isHeaderLine:
+                continue
+            else:
+                y = y_offset + j * (gridSize + pronHeight)
                 
-                c.setFillColorRGB(dotColor[0], dotColor[1], dotColor[2])
-                c.circle(x, y, dotRadius, stroke=0, fill=1)
+                for i in range (0, col_count):
+                    x = x_offset + i * gridSize
+                    
+                    if not (isHeaderBottomLine or (not pron and isLastRow)):
+                        c.circle(x, y, dotRadius, stroke=0, fill=1)
+                
+                if pron and not isLastRow:
+                    y += pronHeight
+                    
+                    for i in range (0, col_count):
+                        x = x_offset + i * gridSize
+                        c.circle(x, y, dotRadius, stroke=0, fill=1)
         
         c.showPage()
     
