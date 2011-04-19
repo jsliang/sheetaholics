@@ -3,8 +3,7 @@ Sheetaholics: a web application for generating sheets
 
 Sheetaholics is an sheet generator written in Python.
 
-Currently (2011-04-18) there is only one app available, which is the dotted lined sheet generator.
-This dotted lined sheet generator is inspired by KOKUYO S&T Co.,Ltd.
+The dotted lined sheet design is inspired by KOKUYO S&T Co.,Ltd.
 KOKUYO product information: http://www.kokuyo-st.co.jp/stationery/dotkei/
 
 
