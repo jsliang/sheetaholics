@@ -168,73 +168,120 @@ class Sheetaholics_Main ( wx.Frame ):
 		fgSizer_right.SetFlexibleDirection( wx.BOTH )
 		fgSizer_right.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
-		sbSizer_dottedlined = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"點線設定" ), wx.VERTICAL )
+		sbSizer_dotnline = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"點線設定" ), wx.VERTICAL )
 		
-		fgSizer_dottedlined = wx.FlexGridSizer( 5, 3, 5, 5 )
-		fgSizer_dottedlined.AddGrowableRow( 0 )
-		fgSizer_dottedlined.AddGrowableRow( 1 )
-		fgSizer_dottedlined.AddGrowableRow( 2 )
-		fgSizer_dottedlined.AddGrowableRow( 3 )
-		fgSizer_dottedlined.AddGrowableRow( 4 )
-		fgSizer_dottedlined.SetFlexibleDirection( wx.BOTH )
-		fgSizer_dottedlined.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
-		
-		self.txt_dottedlined_gridsize = wx.StaticText( self, wx.ID_ANY, u"點線間距：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.txt_dottedlined_gridsize.Wrap( -1 )
-		fgSizer_dottedlined.Add( self.txt_dottedlined_gridsize, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP, 5 )
-		
-		self.tc_dottedlined_gridsize = wx.TextCtrl( self, wx.ID_ANY, u"8", wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer_dottedlined.Add( self.tc_dottedlined_gridsize, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
-		
-		self.txt_dottedlined_mm_0 = wx.StaticText( self, wx.ID_ANY, u"mm", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.txt_dottedlined_mm_0.Wrap( -1 )
-		fgSizer_dottedlined.Add( self.txt_dottedlined_mm_0, 0, wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
-		
-		self.txt_dottedlined_dotcolor = wx.StaticText( self, wx.ID_ANY, u"圓點顏色：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.txt_dottedlined_dotcolor.Wrap( -1 )
-		fgSizer_dottedlined.Add( self.txt_dottedlined_dotcolor, 0, wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
-		
-		self.clrpk_dottedlined_dotcolor = wx.ColourPickerCtrl( self, wx.ID_ANY, wx.BLACK, wx.DefaultPosition, wx.DefaultSize, wx.CLRP_DEFAULT_STYLE )
-		fgSizer_dottedlined.Add( self.clrpk_dottedlined_dotcolor, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
+		fgSizer_dotnline = wx.FlexGridSizer( 7, 4, 5, 5 )
+		fgSizer_dotnline.AddGrowableRow( 0 )
+		fgSizer_dotnline.AddGrowableRow( 1 )
+		fgSizer_dotnline.AddGrowableRow( 2 )
+		fgSizer_dotnline.AddGrowableRow( 3 )
+		fgSizer_dotnline.AddGrowableRow( 4 )
+		fgSizer_dotnline.AddGrowableRow( 5 )
+		fgSizer_dotnline.AddGrowableRow( 6 )
+		fgSizer_dotnline.SetFlexibleDirection( wx.BOTH )
+		fgSizer_dotnline.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
 		
-		fgSizer_dottedlined.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
-		self.txt_dottedlined_dotdiameter = wx.StaticText( self, wx.ID_ANY, u"圓點直徑：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.txt_dottedlined_dotdiameter.Wrap( -1 )
-		fgSizer_dottedlined.Add( self.txt_dottedlined_dotdiameter, 0, wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
+		self.txt_gridsize = wx.StaticText( self, wx.ID_ANY, u"點線間距：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.txt_gridsize.Wrap( -1 )
+		fgSizer_dotnline.Add( self.txt_gridsize, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP, 5 )
 		
-		self.tc_dottedlined_dotdiameter = wx.TextCtrl( self, wx.ID_ANY, u"0.4", wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer_dottedlined.Add( self.tc_dottedlined_dotdiameter, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		self.tc_gridsize = wx.TextCtrl( self, wx.ID_ANY, u"8", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer_dotnline.Add( self.tc_gridsize, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		self.txt_dottedlined_mm_1 = wx.StaticText( self, wx.ID_ANY, u"mm", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.txt_dottedlined_mm_1.Wrap( -1 )
-		fgSizer_dottedlined.Add( self.txt_dottedlined_mm_1, 0, wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
-		
-		self.txt_dottedlined_linecolor = wx.StaticText( self, wx.ID_ANY, u"橫線顏色：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.txt_dottedlined_linecolor.Wrap( -1 )
-		fgSizer_dottedlined.Add( self.txt_dottedlined_linecolor, 0, wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
-		
-		self.clrpk_dottedlined_linecolor = wx.ColourPickerCtrl( self, wx.ID_ANY, wx.BLACK, wx.DefaultPosition, wx.DefaultSize, wx.CLRP_DEFAULT_STYLE )
-		fgSizer_dottedlined.Add( self.clrpk_dottedlined_linecolor, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
+		self.txt_mm_0 = wx.StaticText( self, wx.ID_ANY, u"mm", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.txt_mm_0.Wrap( -1 )
+		fgSizer_dotnline.Add( self.txt_mm_0, 0, wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		
-		fgSizer_dottedlined.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
-		self.txt_dottedlined_linewidth = wx.StaticText( self, wx.ID_ANY, u"橫線線寬：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.txt_dottedlined_linewidth.Wrap( -1 )
-		fgSizer_dottedlined.Add( self.txt_dottedlined_linewidth, 0, wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		self.tc_dottedlined_linewidth = wx.TextCtrl( self, wx.ID_ANY, u"0.2", wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer_dottedlined.Add( self.tc_dottedlined_linewidth, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
-		self.txt_dottedlined_mm_2 = wx.StaticText( self, wx.ID_ANY, u"mm", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
-		self.txt_dottedlined_mm_2.Wrap( -1 )
-		fgSizer_dottedlined.Add( self.txt_dottedlined_mm_2, 0, wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
-		sbSizer_dottedlined.Add( fgSizer_dottedlined, 1, wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
-		fgSizer_right.Add( sbSizer_dottedlined, 1, wx.ALL|wx.EXPAND, 5 )
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		self.cb_drawdots = wx.CheckBox( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.cb_drawdots.SetValue(True) 
+		self.cb_drawdots.SetToolTipString( u"繪製點" )
+		
+		fgSizer_dotnline.Add( self.cb_drawdots, 0, wx.ALIGN_RIGHT|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.txt_dotcolor = wx.StaticText( self, wx.ID_ANY, u"圓點顏色：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.txt_dotcolor.Wrap( -1 )
+		fgSizer_dotnline.Add( self.txt_dotcolor, 0, wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.clrpk_dotcolor = wx.ColourPickerCtrl( self, wx.ID_ANY, wx.BLACK, wx.DefaultPosition, wx.DefaultSize, wx.CLRP_DEFAULT_STYLE )
+		fgSizer_dotnline.Add( self.clrpk_dotcolor, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		self.txt_dotdiameter = wx.StaticText( self, wx.ID_ANY, u"圓點直徑：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.txt_dotdiameter.Wrap( -1 )
+		fgSizer_dotnline.Add( self.txt_dotdiameter, 0, wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.tc_dotdiameter = wx.TextCtrl( self, wx.ID_ANY, u"0.4", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer_dotnline.Add( self.tc_dotdiameter, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.txt_mm_1 = wx.StaticText( self, wx.ID_ANY, u"mm", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.txt_mm_1.Wrap( -1 )
+		fgSizer_dotnline.Add( self.txt_mm_1, 0, wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		self.cb_drawlines = wx.CheckBox( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.cb_drawlines.SetValue(True) 
+		self.cb_drawlines.SetToolTipString( u"繪製線" )
+		
+		fgSizer_dotnline.Add( self.cb_drawlines, 0, wx.ALIGN_RIGHT|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.txt_linecolor = wx.StaticText( self, wx.ID_ANY, u"橫線顏色：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.txt_linecolor.Wrap( -1 )
+		fgSizer_dotnline.Add( self.txt_linecolor, 0, wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.clrpk_linecolor = wx.ColourPickerCtrl( self, wx.ID_ANY, wx.BLACK, wx.DefaultPosition, wx.DefaultSize, wx.CLRP_DEFAULT_STYLE )
+		fgSizer_dotnline.Add( self.clrpk_linecolor, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		
+		fgSizer_dotnline.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		self.txt_linewidth = wx.StaticText( self, wx.ID_ANY, u"橫線線寬：", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.txt_linewidth.Wrap( -1 )
+		fgSizer_dotnline.Add( self.txt_linewidth, 0, wx.ALIGN_RIGHT|wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.tc_linewidth = wx.TextCtrl( self, wx.ID_ANY, u"0.2", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer_dotnline.Add( self.tc_linewidth, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.txt_mm_2 = wx.StaticText( self, wx.ID_ANY, u"mm", wx.Point( -1,-1 ), wx.DefaultSize, 0 )
+		self.txt_mm_2.Wrap( -1 )
+		fgSizer_dotnline.Add( self.txt_mm_2, 0, wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		sbSizer_dotnline.Add( fgSizer_dotnline, 1, wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		fgSizer_right.Add( sbSizer_dotnline, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		sbSizer_pronunciation = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"音標區" ), wx.VERTICAL )
 		
@@ -245,9 +292,8 @@ class Sheetaholics_Main ( wx.Frame ):
 		fgSizer_pronunciation.SetFlexibleDirection( wx.BOTH )
 		fgSizer_pronunciation.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
-		self.cb_pronunciation = wx.CheckBox( self, wx.ID_ANY, u"插入音標列", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.cb_pronunciation.SetValue(True) 
-		fgSizer_pronunciation.Add( self.cb_pronunciation, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		self.cb_drawpron = wx.CheckBox( self, wx.ID_ANY, u"插入音標列", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer_pronunciation.Add( self.cb_drawpron, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 		
 		fgSizer_pronunheight = wx.FlexGridSizer( 1, 3, 5, 5 )
 		fgSizer_pronunheight.SetFlexibleDirection( wx.BOTH )
@@ -308,7 +354,9 @@ class Sheetaholics_Main ( wx.Frame ):
 		self.Centre( wx.BOTH )
 		
 		# Connect Events
-		self.cb_pronunciation.Bind( wx.EVT_CHECKBOX, self.cb_pronunciationOnCheckBox )
+		self.cb_drawdots.Bind( wx.EVT_CHECKBOX, self.cb_drawdotsOnCheckBox )
+		self.cb_drawlines.Bind( wx.EVT_CHECKBOX, self.cb_drawlinesOnCheckBox )
+		self.cb_drawpron.Bind( wx.EVT_CHECKBOX, self.cb_drawpronOnCheckBox )
 		self.btn_dottedlined_genpdf.Bind( wx.EVT_BUTTON, self.btn_dottedlined_genpdfOnButtonClick )
 	
 	def __del__( self ):
@@ -316,7 +364,13 @@ class Sheetaholics_Main ( wx.Frame ):
 	
 	
 	# Virtual event handlers, overide them in your derived class
-	def cb_pronunciationOnCheckBox( self, event ):
+	def cb_drawdotsOnCheckBox( self, event ):
+		event.Skip()
+	
+	def cb_drawlinesOnCheckBox( self, event ):
+		event.Skip()
+	
+	def cb_drawpronOnCheckBox( self, event ):
 		event.Skip()
 	
 	def btn_dottedlined_genpdfOnButtonClick( self, event ):

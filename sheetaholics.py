@@ -20,19 +20,33 @@ class Sheetaholics_Finished_Dialog( gui.Sheetaholics_Finished_Dialog ):
 class Sheetaholics_Main( gui.Sheetaholics_Main ):
     def __init__( self, parent ):
         gui.Sheetaholics_Main.__init__( self, parent )
+        
         self.dp_output.SetPath(os.path.abspath(os.path.dirname(__file__)))
+        
+        self.tc_dotdiameter.Enable( self.cb_drawdots.GetValue() )
+        self.clrpk_dotcolor.Enable( self.cb_drawdots.GetValue() )
+        
+        self.tc_linewidth.Enable( self.cb_drawlines.GetValue() )
+        self.clrpk_linecolor.Enable( self.cb_drawlines.GetValue() )
+        
+        self.tc_pronheight.Enable( self.cb_drawpron.GetValue() )
     
     # Handlers for Sheetaholics_Main events.
-    def cb_pronunciationOnCheckBox( self, event ):
-        if self.cb_pronunciation.GetValue():
-            self.tc_pronheight.Enable( True )
-        else:
-            self.tc_pronheight.Enable( False )
+    def cb_drawdotsOnCheckBox( self, event ):
+        self.tc_dotdiameter.Enable( self.cb_drawdots.GetValue() )
+        self.clrpk_dotcolor.Enable( self.cb_drawdots.GetValue() )
+    
+    def cb_drawlinesOnCheckBox( self, event ):
+        self.tc_linewidth.Enable( self.cb_drawlines.GetValue() )
+        self.clrpk_linecolor.Enable( self.cb_drawlines.GetValue() )
+    
+    def cb_drawpronOnCheckBox( self, event ):
+        self.tc_pronheight.Enable( self.cb_drawpron.GetValue() )
     
     def btn_dottedlined_genpdfOnButtonClick( self, event ):
         config = {}
-        config['gridSize'] =        float(self.tc_dottedlined_gridsize.GetValue())
-        config['pron'] =            self.cb_pronunciation.GetValue()
+        config['gridSize'] =        float(self.tc_gridsize.GetValue())
+        config['drawPron'] =        self.cb_drawpron.GetValue()
         config['pronHeight'] =      float(self.tc_pronheight.GetValue())
         config['pageWidth'] =       float(self.tc_pagewidth.GetValue())
         config['pageHeight'] =      float(self.tc_pageheight.GetValue())
@@ -40,10 +54,12 @@ class Sheetaholics_Main( gui.Sheetaholics_Main ):
         config['marginOuter'] =     float(self.tc_outermargin.GetValue())
         config['marginTop'] =       float(self.tc_topmargin.GetValue())
         config['marginBottom'] =    float(self.tc_bottommargin.GetValue())
-        config['dotDiameter'] =     float(self.tc_dottedlined_dotdiameter.GetValue())
-        config['dotColor'] =        self.clrpk_dottedlined_dotcolor.GetColour()
-        config['lineWidth'] =       float(self.tc_dottedlined_linewidth.GetValue())
-        config['lineColor'] =       self.clrpk_dottedlined_linecolor.GetColour()
+        config['drawdots'] =        self.cb_drawdots.GetValue()
+        config['dotDiameter'] =     float(self.tc_dotdiameter.GetValue())
+        config['dotColor'] =        self.clrpk_dotcolor.GetColour()
+        config['drawlines'] =       self.cb_drawlines.GetValue()
+        config['lineWidth'] =       float(self.tc_linewidth.GetValue())
+        config['lineColor'] =       self.clrpk_linecolor.GetColour()
         config['pageCount'] =       float(self.sc_pagecount.GetValue())
         
         pdf_filename = "dottedlinedsheets_%s.pdf" % datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
