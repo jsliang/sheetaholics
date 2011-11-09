@@ -12,14 +12,14 @@ KOKUYO product information: http://www.kokuyo-st.co.jp/stationery/dotkei/
 
 Below is a list of packages used by Sheetaholics:
 
-* Python 2.5.4
+* Python 2.7
   http://www.python.org/
   Python 2.5.4 has been tested okay. Python 2.7 might fail when using PyInstaller.
-* wxPython 2.8
+* wxPython 2.8 (for 32-bit Python 2.7)
   http://wxpython.org/
 * reportlab 2.5
   http://pypi.python.org/pypi/reportlab/2.5
-* wxFormBuilder 3.2.1-beta
+* wxFormBuilder 3.2.03-beta
   http://wxformbuilder.org
 
 After installing packages above, git clone this project.
