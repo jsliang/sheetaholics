@@ -1,0 +1,81 @@
+
+<h1>Sheetaholics: Dotted-Ruled Sheets Generator</h1>
+
+<table border="0" id="configForm">
+<tbody>
+<tr>
+<td style="text-align: center;" colspan="2">
+<h2>Layout Settings</h2>
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+Grid Size: <input id="gridSize" size="2" type="number" step="1" value="8" />mm<br/>
+
+Dot Color: <input id="dotColor" size="9" type="text" value="000000" class="color" /><br/>
+
+Dot Diameter: <input id="dotDiameter" size="4" type="number" step="0.1" value="0.4" />mm<br/>
+
+Line Color: <input id="lineColor" size="9" type="text" value="000000" class="color" /><br/>
+
+Line Width: <input id="lineWidth" size="4" type="number" step="0.1" value="0.2" />mm
+
+</td>
+<td width="50%">
+
+Inner Margin: <input id="marginInner" size="3" type="number" step="1" value="20" />mm<br/>
+
+Outer Margin: <input id="marginOuter" size="3" type="number" step="1" value="15" />mm<br/>
+
+Top Margin: <input id="marginTop" size="3" type="number" step="1" value="15" />mm<br/>
+
+Bottom Margin: <input id="marginBottom" size="3" type="number" step="1" value="15" />mm<br/>
+
+</td>
+</tr>
+<tr>
+<td style="text-align: center;">
+<h2>Paper Size</h2>
+</td>
+<td style="text-align: center;">
+<h2>Number of Pages</h2>
+</td>
+</tr>
+<tr>
+<td>
+
+<!-- Page Width: <input id="pageWidth" size="4" type="text" value="210" />mm<br/>
+
+Page Height: <input id="pageHeight" size="4" type="text" value="297" />mm -->
+
+Paper Format:
+<select id="pageFormat">
+    <option value="a3">A3</option>
+    <option value="a4" selected="true">A4</option>
+    <option value="a5">A5</option>
+    <option value="letter">Letter</option>
+    <option value="legal">Legal</option>
+</select>
+
+</td>
+<td>
+
+Number of Pages: <input id="pageCount" size="3" type="text" value="2" />
+
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<h2 style="text-align: center;">Download PDF</h2>
+<p style="text-align: center;"><input type="button" id="btnGeneratePDF" value="Download PDF"/>
+</td>
+</tr>
+</tbody>
+</table>
+
+<iframe frameborder="0" id="iShowPDF" width="100%" height="400"></iframe>
+
+<script type="text/javascript" src="jspdf.js"></script>
+<script type="text/javascript" src="jscolor.js"></script>
+<script type="text/javascript" src="sheetaholics.js"></script>
