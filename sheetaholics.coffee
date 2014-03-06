@@ -138,8 +138,32 @@ genpdf = (config) ->
             pdf.addPage()
     return pdf
 
-for form_input in document.getElementsByTagName("input")
-    form_input.onchange = () ->
+isMobile =
+    Android: () ->
+        return navigator.userAgent.match(/Android/i)
+    BlackBerry: () ->
+        return navigator.userAgent.match(/BlackBerry/i)
+    iOS: () ->
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i)
+    Opera: () ->
+        return navigator.userAgent.match(/Opera Mini/i)
+    Windows: () ->
+        return navigator.userAgent.match(/IEMobile/i)
+    any: () ->
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows())
+
+if isMobile.any()
+    ePreviewPDF = document.getElementById("previewPDF")
+    ePreviewPDF.parentNode.removeChild(ePreviewPDF)
+else
+    for form_input in document.getElementsByTagName("input")
+        form_input.onchange = () ->
+            pdf = genpdf( loadConfigFromForm() )
+            string = pdf.output('datauristring')
+            document.getElementById("iShowPDF").src = string
+
+    window.onload = () ->
+        fillConfigIntoForm()
         pdf = genpdf( loadConfigFromForm() )
         string = pdf.output('datauristring')
         document.getElementById("iShowPDF").src = string
@@ -147,9 +171,3 @@ for form_input in document.getElementsByTagName("input")
 document.getElementById("btnGeneratePDF").onclick = () ->
     pdf = genpdf( loadConfigFromForm() )
     window.location.href = pdf.output('datauristring')
-
-window.onload = () ->
-    fillConfigIntoForm()
-    pdf = genpdf( loadConfigFromForm() )
-    string = pdf.output('datauristring')
-    document.getElementById("iShowPDF").src = string
