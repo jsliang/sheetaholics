@@ -1,7 +1,7 @@
 # Sheetaholics: a web application for generating dotted-ruled sheets
 
 
-Sheetaholics is an sheet generator written in JavaScript.
+Sheetaholics is a sheet generator written in JavaScript.
 
 The dotted-ruled sheet design is inspired by the product [ドット入り罫線シリーズ](http://www.kokuyo-st.co.jp/stationery/dotkei) from KOKUYO S&T Co.,Ltd. .
 
