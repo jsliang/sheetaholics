@@ -15,7 +15,7 @@
         marginOuter: 15,
         marginTop: 15,
         marginBottom: 15,
-        pageFormat: 'a3',
+        pageFormat: 'a4',
         pageCount: 2
       };
     }
