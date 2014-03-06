@@ -1,53 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sheetaholics: Dotted-Ruled Sheets Generator</title>
 
-<h1>Sheetaholics: Dotted-Ruled Sheets Generator</h1>
+        <!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<table border="0" id="configForm">
-<tbody>
-<tr>
-<td width="50%">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container-fluid" style="height: 100%">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1>Sheetaholics <small>Dotted-Ruled Sheets Generator</small></h1>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="gridSize" class="col-md-4 col-xs-4 control-label">Grid Size</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group input-group-sm">
+                                    <input id="gridSize" type="number" step="1" value="8" class="form-control" />
+                                    <span class="input-group-addon">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pageFormat" class="col-md-4 col-xs-4 control-label">Paper Format</label>
+                            <div class="col-md-8 col-xs-8">
+                                <select id="pageFormat" class="form-control">
+                                        <option value="a3">A3</option>
+                                        <option value="a4" selected="true">A4</option>
+                                        <option value="a5">A5</option>
+                                        <option value="letter">Letter</option>
+                                        <option value="legal">Legal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dotColor" class="col-md-4 col-xs-4 control-label">Dot Color</label>
+                            <div class="col-md-8 col-xs-8">
+                                <input id="dotColor" type="text" value="000000" class="color form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dotDiameter" class="col-md-4 col-xs-4 control-label">Dot Diameter</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group input-group-sm">
+                                    <input id="dotDiameter" type="number" step="0.1" value="0.4" class="form-control" />
+                                    <span class="input-group-addon">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lineColor" class="col-md-4 col-xs-4 control-label">Line Color</label>
+                            <div class="col-md-8 col-xs-8">
+                                <input id="lineColor" type="text" value="000000" class="color form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lineWidth" class="col-md-4 col-xs-4 control-label">Line Width</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group input-group-sm">
+                                    <input id="lineWidth" type="number" step="0.1" value="0.2" class="form-control" />
+                                    <span class="input-group-addon">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="marginInner" class="col-md-4 col-xs-4 control-label">Inner Margin</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group input-group-sm">
+                                    <input id="marginInner" type="number" step="1" value="20" class="form-control" />
+                                    <span class="input-group-addon">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="marginOuter" class="col-md-4 col-xs-4 control-label">Outer Margin</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group input-group-sm">
+                                    <input id="marginOuter" type="number" step="1" value="15" class="form-control" />
+                                    <span class="input-group-addon">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="marginTop" class="col-md-4 col-xs-4 control-label">Top Margin</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group input-group-sm">
+                                    <input id="marginTop" type="number" step="1" value="15" class="form-control" />
+                                    <span class="input-group-addon">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="marginBottom" class="col-md-4 col-xs-4 control-label">Bottom Margin</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="input-group input-group-sm">
+                                    <input id="marginBottom" type="number" step="1" value="15" class="form-control" />
+                                    <span class="input-group-addon">mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <button type="button" id="btnGeneratePDF" class="btn btn-primary btn-lg btn-block">Download PDF</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-8">
+                    <h2>Preview</h2>
+                    <iframe frameborder="0" id="iShowPDF" width="100%" height="550"></iframe>
+                </div>
+            </div>
+        </div>
 
-Grid Size: <input id="gridSize" size="2" type="number" step="1" value="8" />mm<br/>
+        <script type="text/javascript" src="jspdf.js"></script>
+        <script type="text/javascript" src="jscolor.js"></script>
+        <script type="text/javascript" src="sheetaholics.js"></script>
 
-Dot Color: <input id="dotColor" size="9" type="text" value="000000" class="color" /><br/>
-
-Dot Diameter: <input id="dotDiameter" size="4" type="number" step="0.1" value="0.4" />mm<br/>
-
-Line Color: <input id="lineColor" size="9" type="text" value="000000" class="color" /><br/>
-
-Line Width: <input id="lineWidth" size="4" type="number" step="0.1" value="0.2" />mm
-
-</td>
-<td width="50%">
-
-Paper Format:
-<select id="pageFormat">
-    <option value="a3">A3</option>
-    <option value="a4" selected="true">A4</option>
-    <option value="a5">A5</option>
-    <option value="letter">Letter</option>
-    <option value="legal">Legal</option>
-</select><br/>
-
-Inner Margin: <input id="marginInner" size="3" type="number" step="1" value="20" />mm<br/>
-
-Outer Margin: <input id="marginOuter" size="3" type="number" step="1" value="15" />mm<br/>
-
-Top Margin: <input id="marginTop" size="3" type="number" step="1" value="15" />mm<br/>
-
-Bottom Margin: <input id="marginBottom" size="3" type="number" step="1" value="15" />mm
-
-</td>
-</tr>
-<tr>
-<td colspan="2">
-<p style="text-align: center;"><input type="button" id="btnGeneratePDF" value="Download PDF"/>
-</td>
-</tr>
-</tbody>
-</table>
-
-<iframe frameborder="0" id="iShowPDF" width="100%" height="400"></iframe>
-
-<script type="text/javascript" src="jspdf.js"></script>
-<script type="text/javascript" src="jscolor.js"></script>
-<script type="text/javascript" src="sheetaholics.js"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </body>
+</html>
