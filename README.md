@@ -9,8 +9,11 @@ The dotted-ruled sheet design is inspired by the product [ドット入り罫線�
 ## CREDITS
 
 
-Special thanks to [jsPDF](http://jspdf.com) for the JavaScript PDF generation library; and [JSColor](http://jscolor.com/) for the JavaScript color picker.
-
+Special thanks to
+[Bootstrap](http://getbootstrap.com/) for the responsive framework,
+[jsPDF](http://jspdf.com) for the JavaScript PDF generation library,
+and
+[JSColor](http://jscolor.com) for the JavaScript color picker.
 
 ## LIVE DEMO
 
