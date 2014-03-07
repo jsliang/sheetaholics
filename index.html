@@ -21,24 +21,25 @@
     <body>
         <div class="container-fluid" style="height: 100%">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <h1>Sheetaholics</h1>
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 title="Sheetaholics is a dotted-ruled sheet generator.">Sheetaholics</h1>
                     <article>
-                        <p>
-                            Sheetaholics is a dotted-ruled sheet generator.
-
-                            The dotted-ruled sheet design is inspired by the product <a href="http://www.kokuyo-st.co.jp/stationery/dotkei/" target="_blank">ドット入り罫線シリーズ</a> from KOKUYO S&amp;T Co.,Ltd.
+                        <p title="The dotted-ruled sheet design is inspired by the product ドット入り罫線シリーズ from KOKUYO S&amp;T Co.,Ltd.">
+                            點線筆記本的設計參考自 KOKUYO S&amp;T Co.,Ltd. 的東大筆記本（<a href="http://www.kokuyo-st.co.jp/stationery/dotkei/" target="_blank">ドット入り罫線シリーズ</a>）。
+                        </p>
+                        <p title="The distance between each dot is equal to the line height. This feature enables the ruled sheet to be used as a grid paper and helps you to make beautiful notes.">
+                            每個點的間隔和行高一樣，因此方格的功能性，有助於做出精美的筆記。
                         </p>
                     </article>
                     <form class="form-horizontal" role="form" id="configForm">
                         <div class="form-group">
                             <div class="col-md-4 col-sm-12">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">Basic</div>
+                                    <div class="panel-heading" title="Basic">基本設定</div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            <label for="gridSize" class="col-lg-5 col-md-6 col-xs-4 control-label">Grid Size</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="gridSize" title="Line Height" class="col-lg-4 col-md-5 col-xs-4 control-label">行距</label>
+                                            <div class="col-lg-8 col-md-7 col-xs-8">
                                                 <div class="input-group input-group-sm">
                                                     <input id="gridSize" type="number" step="1" value="8" class="form-control" />
                                                     <span class="input-group-addon">mm</span>
@@ -46,8 +47,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="pageFormat" class="col-lg-5 col-md-6 col-xs-4 control-label">Paper Format</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="pageFormat" title="Paper Format" class="col-lg-4 col-md-5 col-xs-4 control-label">紙張尺寸</label>
+                                            <div class="col-lg-8 col-md-7 col-xs-8">
                                                 <select id="pageFormat" class="form-control">
                                                         <option value="a3">A3</option>
                                                         <option value="a4" selected>A4</option>
@@ -61,23 +62,23 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <button type="button" id="btnGeneratePDF" class="btn btn-primary btn-lg btn-block hidden-xs">Download PDF</button>
+                                        <button type="button" id="btnGeneratePDF" title="Download PDF" class="btn btn-primary btn-lg btn-block hidden-xs">下載 PDF</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">Grids</div>
+                                    <div class="panel-heading" title="Dots &amp; Lines">點線設定</div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            <label for="dotColor" class="col-lg-5 col-md-6 col-xs-4 control-label">Dot Color</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="dotColor" title="Dot Color" class="col-lg-4 col-md-5 col-xs-4 control-label">點的顏色</label>
+                                            <div class="col-lg-8 col-md-7 col-xs-8">
                                                 <input id="dotColor" type="text" value="000000" class="color form-control" />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="dotDiameter" class="col-lg-5 col-md-6 col-xs-4 control-label">Dot Diameter</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="dotDiameter" title="Dot Diameter" class="col-lg-4 col-md-5 col-xs-4 control-label">點的直徑</label>
+                                            <div class="col-lg-8 col-md-7 col-xs-8">
                                                 <div class="input-group input-group-sm">
                                                     <input id="dotDiameter" type="number" step="0.1" value="0.4" class="form-control" />
                                                     <span class="input-group-addon">mm</span>
@@ -85,14 +86,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="lineColor" class="col-lg-5 col-md-6 col-xs-4 control-label">Line Color</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="lineColor" title="Line Color" class="col-lg-4 col-md-5 col-xs-4 control-label">線的顏色</label>
+                                            <div class="col-lg-8 col-md-7 col-xs-8">
                                                 <input id="lineColor" type="text" value="000000" class="color form-control" />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="lineWidth" class="col-lg-5 col-md-6 col-xs-4 control-label">Line Width</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="lineWidth" title="Line Width" class="col-lg-4 col-md-5 col-xs-4 control-label">線的粗細</label>
+                                            <div class="col-lg-8 col-md-7 col-xs-8">
                                                 <div class="input-group input-group-sm">
                                                     <input id="lineWidth" type="number" step="0.1" value="0.2" class="form-control" />
                                                     <span class="input-group-addon">mm</span>
@@ -104,11 +105,11 @@
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">Margins</div>
+                                    <div class="panel-heading" title="Margins">邊界設定</div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            <label for="marginInner" class="col-lg-5 col-md-6 col-xs-4 control-label">Inner Margin</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="marginInner" title="Inner Margin" class="col-lg-3 col-md-5 col-xs-4 control-label">內邊界</label>
+                                            <div class="col-lg-9 col-md-7 col-xs-8">
                                                 <div class="input-group input-group-sm">
                                                     <input id="marginInner" type="number" step="1" value="20" class="form-control" />
                                                     <span class="input-group-addon">mm</span>
@@ -116,8 +117,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="marginOuter" class="col-lg-5 col-md-6 col-xs-4 control-label">Outer Margin</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="marginOuter" title="Outer Margin" class="col-lg-3 col-md-5 col-xs-4 control-label">外邊界</label>
+                                            <div class="col-lg-9 col-md-7 col-xs-8">
                                                 <div class="input-group input-group-sm">
                                                     <input id="marginOuter" type="number" step="1" value="15" class="form-control" />
                                                     <span class="input-group-addon">mm</span>
@@ -125,8 +126,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="marginTop" class="col-lg-5 col-md-6 col-xs-4 control-label">Top Margin</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="marginTop" title="Top Margin" class="col-lg-3 col-md-5 col-xs-4 control-label">上邊界</label>
+                                            <div class="col-lg-9 col-md-7 col-xs-8">
                                                 <div class="input-group input-group-sm">
                                                     <input id="marginTop" type="number" step="1" value="15" class="form-control" />
                                                     <span class="input-group-addon">mm</span>
@@ -134,8 +135,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="marginBottom" class="col-lg-5 col-md-6 col-xs-4 control-label">Bottom Margin</label>
-                                            <div class="col-lg-7 col-md-6 col-xs-8">
+                                            <label for="marginBottom" title="Bottom Margin" class="col-lg-3 col-md-5 col-xs-4 control-label">下邊界</label>
+                                            <div class="col-lg-9 col-md-7 col-xs-8">
                                                 <div class="input-group input-group-sm">
                                                     <input id="marginBottom" type="number" step="1" value="15" class="form-control" />
                                                     <span class="input-group-addon">mm</span>
@@ -148,7 +149,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <button type="button" id="btnGeneratePDF2" class="btn btn-primary btn-lg btn-block visible-xs">Download PDF</button>
+                                <button type="button" id="btnGeneratePDF2" title="Download PDF" class="btn btn-primary btn-lg btn-block visible-xs">下載 PDF</button>
                             </div>
                         </div>
                     </form>
@@ -157,7 +158,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div id="previewPDF">
-                        <h2>Preview</h2>
+                        <h2 title="Preview">預覽</h2>
                         <iframe id="iShowPDF" width="100%" height="550"></iframe>
                     </div>
                 </div>
