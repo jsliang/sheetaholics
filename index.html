@@ -183,6 +183,13 @@
 
         <script type="text/javascript" src="javascripts/jspdf.js"></script>
         <script type="text/javascript" src="javascripts/jscolor.js"></script>
+        <!--[if IE]>
+        <script type="text/javascript">
+            ePreviewPDF = document.getElementById("previewPDF");
+            ePreviewPDF.parentNode.removeChild(ePreviewPDF);
+            alert("很抱歉，目前不支援 IE。使用 IE 會無法正常產生點線筆記頁面。\n請嘗試其他瀏覽器如 Firefox、Chrome …等。")
+        </script>
+        <![endif]-->
         <script type="text/javascript" src="javascripts/sheetaholics.js"></script>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
