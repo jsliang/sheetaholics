@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sheetaholics: Dotted-Ruled Sheets Generator</title>
 
@@ -15,111 +15,156 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <link href="sheetaholics.min.css" rel="stylesheet">
     </head>
     <body>
         <div class="container-fluid" style="height: 100%">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-10 col-md-offset-1">
                     <h1>Sheetaholics</h1>
-                    <div class="well">
-                        Sheetaholics is a dotted-ruled sheet generator.
+                    <article>
+                        <p>
+                            Sheetaholics is a dotted-ruled sheet generator.
 
-                        The dotted-ruled sheet design is inspired by the product <a href="http://www.kokuyo-st.co.jp/stationery/dotkei/" target="_blank">ドット入り罫線シリーズ</a> from KOKUYO S&amp;T Co.,Ltd.
-
-                        Special thanks to
-                        <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> for the responsive framework,
-                        <a href="http://jspdf.com" target="_blank">jsPDF</a> for the JavaScript PDF generation library,
-                        and <a href="http://jscolor.com" target="_blank">JSColor</a> for the JavaScript color picker.
-                    </div>
-                    <form class="form-horizontal" role="form">
+                            The dotted-ruled sheet design is inspired by the product <a href="http://www.kokuyo-st.co.jp/stationery/dotkei/" target="_blank">ドット入り罫線シリーズ</a> from KOKUYO S&amp;T Co.,Ltd.
+                        </p>
+                        <p>
+                            Special thanks to
+                            <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> for the responsive framework,
+                            <a href="http://jspdf.com" target="_blank">jsPDF</a> for the JavaScript PDF generation library,
+                            and <a href="http://jscolor.com" target="_blank">JSColor</a> for the JavaScript color picker.
+                        </p>
+                    </article>
+                    <form class="form-horizontal" role="form" id="configForm">
                         <div class="form-group">
-                            <label for="gridSize" class="col-md-3 col-xs-2 control-label">Grid Size</label>
-                            <div class="col-md-3 col-xs-4">
-                                <div class="input-group input-group-sm">
-                                    <input id="gridSize" type="number" step="1" value="8" class="form-control" />
-                                    <span class="input-group-addon">mm</span>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Basic</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="gridSize" class="col-lg-4 col-md-6 control-label">Grid Size</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <input id="gridSize" type="number" step="1" value="8" class="form-control" />
+                                                    <span class="input-group-addon">mm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pageFormat" class="col-lg-4 col-md-6 control-label">Paper Format</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <select id="pageFormat" class="form-control">
+                                                        <option value="a3">A3</option>
+                                                        <option value="a4" selected>A4</option>
+                                                        <option value="a5">A5</option>
+                                                        <option value="letter">Letter</option>
+                                                        <option value="legal">Legal</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button type="button" id="btnGeneratePDF" class="btn btn-primary btn-lg btn-block hidden-xs">Download PDF</button>
+                                    </div>
                                 </div>
                             </div>
-                            <label for="pageFormat" class="col-md-3 col-xs-2 control-label">Paper Format</label>
-                            <div class="col-md-3 col-xs-4">
-                                <select id="pageFormat" class="form-control">
-                                        <option value="a3">A3</option>
-                                        <option value="a4" selected="true">A4</option>
-                                        <option value="a5">A5</option>
-                                        <option value="letter">Letter</option>
-                                        <option value="legal">Legal</option>
-                                </select>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Grids</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="dotColor" class="col-lg-4 col-md-6 control-label">Dot Color</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <input id="dotColor" type="text" value="000000" class="color form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dotDiameter" class="col-lg-4 col-md-6 control-label">Dot Diameter</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <input id="dotDiameter" type="number" step="0.1" value="0.4" class="form-control" />
+                                                    <span class="input-group-addon">mm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lineColor" class="col-lg-4 col-md-6 control-label">Line Color</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <input id="lineColor" type="text" value="000000" class="color form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lineWidth" class="col-lg-4 col-md-6 control-label">Line Width</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <input id="lineWidth" type="number" step="0.1" value="0.2" class="form-control" />
+                                                    <span class="input-group-addon">mm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Margins</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="marginInner" class="col-lg-4 col-md-6 control-label">Inner Margin</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <input id="marginInner" type="number" step="1" value="20" class="form-control" />
+                                                    <span class="input-group-addon">mm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="marginOuter" class="col-lg-4 col-md-6 control-label">Outer Margin</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <input id="marginOuter" type="number" step="1" value="15" class="form-control" />
+                                                    <span class="input-group-addon">mm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="marginTop" class="col-lg-4 col-md-6 control-label">Top Margin</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <input id="marginTop" type="number" step="1" value="15" class="form-control" />
+                                                    <span class="input-group-addon">mm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="marginBottom" class="col-lg-4 col-md-6 control-label">Bottom Margin</label>
+                                            <div class="col-lg-8 col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <input id="marginBottom" type="number" step="1" value="15" class="form-control" />
+                                                    <span class="input-group-addon">mm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="dotColor" class="col-md-3 col-xs-2 control-label">Dot Color</label>
-                            <div class="col-md-3 col-xs-4">
-                                <input id="dotColor" type="text" value="000000" class="color form-control" />
-                            </div>
-                            <label for="dotDiameter" class="col-md-3 col-xs-2 control-label">Dot Diameter</label>
-                            <div class="col-md-3 col-xs-4">
-                                <div class="input-group input-group-sm">
-                                    <input id="dotDiameter" type="number" step="0.1" value="0.4" class="form-control" />
-                                    <span class="input-group-addon">mm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="lineColor" class="col-md-3 col-xs-2 control-label">Line Color</label>
-                            <div class="col-md-3 col-xs-4">
-                                <input id="lineColor" type="text" value="000000" class="color form-control" />
-                            </div>
-                            <label for="lineWidth" class="col-md-3 col-xs-2 control-label">Line Width</label>
-                            <div class="col-md-3 col-xs-4">
-                                <div class="input-group input-group-sm">
-                                    <input id="lineWidth" type="number" step="0.1" value="0.2" class="form-control" />
-                                    <span class="input-group-addon">mm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="marginInner" class="col-md-3 col-xs-2 control-label">Inner Margin</label>
-                            <div class="col-md-3 col-xs-4">
-                                <div class="input-group input-group-sm">
-                                    <input id="marginInner" type="number" step="1" value="20" class="form-control" />
-                                    <span class="input-group-addon">mm</span>
-                                </div>
-                            </div>
-                            <label for="marginOuter" class="col-md-3 col-xs-2 control-label">Outer Margin</label>
-                            <div class="col-md-3 col-xs-4">
-                                <div class="input-group input-group-sm">
-                                    <input id="marginOuter" type="number" step="1" value="15" class="form-control" />
-                                    <span class="input-group-addon">mm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="marginTop" class="col-md-3 col-xs-2 control-label">Top Margin</label>
-                            <div class="col-md-3 col-xs-4">
-                                <div class="input-group input-group-sm">
-                                    <input id="marginTop" type="number" step="1" value="15" class="form-control" />
-                                    <span class="input-group-addon">mm</span>
-                                </div>
-                            </div>
-                            <label for="marginBottom" class="col-md-3 col-xs-2 control-label">Bottom Margin</label>
-                            <div class="col-md-3 col-xs-4">
-                                <div class="input-group input-group-sm">
-                                    <input id="marginBottom" type="number" step="1" value="15" class="form-control" />
-                                    <span class="input-group-addon">mm</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4">
-                                <button type="button" id="btnGeneratePDF" class="btn btn-primary btn-lg">Download PDF</button>
+                            <div class="col-md-12">
+                                <button type="button" id="btnGeneratePDF2" class="btn btn-primary btn-lg btn-block visible-xs">Download PDF</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6">
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
                     <div id="previewPDF">
                         <h2>Preview</h2>
-                        <iframe frameborder="0" id="iShowPDF" width="100%" height="550"></iframe>
+                        <iframe id="iShowPDF" width="100%" height="550"></iframe>
                     </div>
                 </div>
             </div>

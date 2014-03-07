@@ -103,36 +103,38 @@ genpdf = (config) ->
         y_adjust = ((pageHeight - marginTop - marginBottom) - (row_count - 1) * gridSize) / 2
 
         # Draw lines
-        lineLength = (pageWidth - marginInner - marginOuter)
-        x_offset = marginInner
-        y_offset = y_adjust + marginTop - lineWidth / 2
+        if lineWidth > 0
+            lineLength = (pageWidth - marginInner - marginOuter)
+            x_offset = marginInner
+            y_offset = y_adjust + marginTop - lineWidth / 2
 
-        pdf.setDrawColor(lineColorR, lineColorG, lineColorB)
-        for j in [1..row_count]
-            isFirstLine = (j == 1)
-            isLastLine = (j == row_count)
+            pdf.setDrawColor(lineColorR, lineColorG, lineColorB)
+            for j in [1..row_count]
+                isFirstLine = (j == 1)
+                isLastLine = (j == row_count)
 
-            y = y_offset + (j-1) * gridSize
+                y = y_offset + (j-1) * gridSize
 
-            if isFirstLine or isLastLine
-                pdf.setLineWidth(lineWidth * 2)
-            else
-                pdf.setLineWidth(lineWidth)
+                if isFirstLine or isLastLine
+                    pdf.setLineWidth(lineWidth * 2)
+                else
+                    pdf.setLineWidth(lineWidth)
 
-            pdf.line(x_offset, y, x_offset + lineLength, y)
+                pdf.line(x_offset, y, x_offset + lineLength, y)
 
         # Draw dots
-        x_offset = x_adjust + marginInner
-        y_offset = y_adjust + marginTop - lineWidth / 2
+        if dotRadius > 0
+            x_offset = x_adjust + marginInner
+            y_offset = y_adjust + marginTop - lineWidth / 2
 
-        pdf.setFillColor(dotColorR, dotColorG, dotColorB)
+            pdf.setFillColor(dotColorR, dotColorG, dotColorB)
 
-        for j in [1..row_count]
-            y = y_offset + (j-1) * gridSize
+            for j in [1..row_count]
+                y = y_offset + (j-1) * gridSize
 
-            for k in [1..col_count]
-                x = x_offset + (k-1) * gridSize
-                pdf.circle(x, y, dotRadius, 'F')
+                for k in [1..col_count]
+                    x = x_offset + (k-1) * gridSize
+                    pdf.circle(x, y, dotRadius, 'F')
 
         if i < 2
             pdf.addPage()
@@ -152,22 +154,25 @@ isMobile =
     any: () ->
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows())
 
+clickBtnGenPdf = () ->
+    pdf = genpdf( loadConfigFromForm() )
+    window.location.href = pdf.output('datauristring')
+
+updatePreview = () ->
+    pdf = genpdf( loadConfigFromForm() )
+    string = pdf.output('datauristring')
+    document.getElementById("iShowPDF").src = string
+
+document.getElementById("btnGeneratePDF").onclick = clickBtnGenPdf
+document.getElementById("btnGeneratePDF2").onclick = clickBtnGenPdf
+
 if isMobile.any()
     ePreviewPDF = document.getElementById("previewPDF")
     ePreviewPDF.parentNode.removeChild(ePreviewPDF)
 else
     for form_input in document.getElementsByTagName("input")
-        form_input.onchange = () ->
-            pdf = genpdf( loadConfigFromForm() )
-            string = pdf.output('datauristring')
-            document.getElementById("iShowPDF").src = string
+        form_input.onchange = updatePreview
 
     window.onload = () ->
         fillConfigIntoForm()
-        pdf = genpdf( loadConfigFromForm() )
-        string = pdf.output('datauristring')
-        document.getElementById("iShowPDF").src = string
-
-document.getElementById("btnGeneratePDF").onclick = () ->
-    pdf = genpdf( loadConfigFromForm() )
-    window.location.href = pdf.output('datauristring')
+        updatePreview()
