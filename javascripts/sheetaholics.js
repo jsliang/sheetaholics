@@ -180,9 +180,11 @@
   updatePreview = function() {
     var pdf, string;
 
-    pdf = genpdf(loadConfigFromForm());
-    string = pdf.output('datauristring');
-    return document.getElementById("iShowPDF").src = string;
+    if (document.getElementById("iShowPDF") !== null) {
+      pdf = genpdf(loadConfigFromForm());
+      string = pdf.output('datauristring');
+      return document.getElementById("iShowPDF").src = string;
+    }
   };
 
   document.getElementById("btnGeneratePDF").onclick = clickBtnGenPdf;
