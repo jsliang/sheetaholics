@@ -1,0 +1,37 @@
+body {
+	font-size: 15px;
+}
+
+h1, article {
+	text-align: center;
+}
+
+h1, h2 {
+	font-family: "Microsoft YaHei", Overlock, sans-serif;
+}
+
+article {
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
+footer {
+	text-align: center;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	font-size: 0.8em;
+}
+
+.control-label {
+	font-weight: normal;
+}
+
+.panel-heading {
+	font-family: "Microsoft YaHei", Overlock, sans-serif;
+	font-weight: bold;
+}
+
+#btnGeneratePDF,
+#btnGeneratePDF2 {
+	font-family: "Microsoft YaHei", Overlock, sans-serif;
+}
