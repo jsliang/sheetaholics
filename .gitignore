@@ -1,0 +1,9 @@
+.coffeescript-cache/
+.sass-cache/
+bootstrap/css/
+bootstrap/fonts/
+bootstrap/js/bootstrap.js
+build_*/
+config.rb
+fire_app_log.txt
+
