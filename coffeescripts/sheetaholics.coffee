@@ -140,6 +140,20 @@ genpdf = (config) ->
             pdf.addPage()
     return pdf
 
+isBrowser =
+    #See more at: http://www.codekhan.com/2012/12/how-to-detect-different-browsers-using.html#sthash.sSBc7ake.dpuf
+
+    firefox: () ->
+        return navigator.userAgent.toLowerCase().indexOf("firefox") > -1
+    chrome: () ->
+        return navigator.userAgent.toLowerCase().indexOf("chrome") > -1
+    opera: () ->
+        return navigator.userAgent.toLowerCase().indexOf("opera") > -1
+    msie: () ->
+        return navigator.userAgent.toLowerCase().indexOf("msie") > -1
+    safari: () ->
+        return navigator.userAgent.toLowerCase().indexOf("safari") > -1
+
 isMobile =
     Android: () ->
         return navigator.userAgent.match(/Android/i)
@@ -167,7 +181,7 @@ updatePreview = () ->
 document.getElementById("btnGeneratePDF").onclick = clickBtnGenPdf
 document.getElementById("btnGeneratePDF2").onclick = clickBtnGenPdf
 
-if isMobile.any()
+if isMobile.any() or isBrowser.firefox()
     ePreviewPDF = document.getElementById("previewPDF")
     ePreviewPDF.parentNode.removeChild(ePreviewPDF)
 else

@@ -1,5 +1,5 @@
 (function() {
-  var clickBtnGenPdf, ePreviewPDF, fillConfigIntoForm, form_input, form_select, genpdf, isMobile, loadConfigFromForm, updatePreview, _i, _j, _len, _len1, _ref, _ref1;
+  var clickBtnGenPdf, ePreviewPDF, fillConfigIntoForm, form_input, form_select, genpdf, isBrowser, isMobile, loadConfigFromForm, updatePreview, _i, _j, _len, _len1, _ref, _ref1;
 
   fillConfigIntoForm = function(config) {
     var option, _i, _len, _ref, _results;
@@ -149,6 +149,24 @@
     return pdf;
   };
 
+  isBrowser = {
+    firefox: function() {
+      return navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+    },
+    chrome: function() {
+      return navigator.userAgent.toLowerCase().indexOf("chrome") > -1;
+    },
+    opera: function() {
+      return navigator.userAgent.toLowerCase().indexOf("opera") > -1;
+    },
+    msie: function() {
+      return navigator.userAgent.toLowerCase().indexOf("msie") > -1;
+    },
+    safari: function() {
+      return navigator.userAgent.toLowerCase().indexOf("safari") > -1;
+    }
+  };
+
   isMobile = {
     Android: function() {
       return navigator.userAgent.match(/Android/i);
@@ -191,7 +209,7 @@
 
   document.getElementById("btnGeneratePDF2").onclick = clickBtnGenPdf;
 
-  if (isMobile.any()) {
+  if (isMobile.any() || isBrowser.firefox()) {
     ePreviewPDF = document.getElementById("previewPDF");
     ePreviewPDF.parentNode.removeChild(ePreviewPDF);
   } else {
